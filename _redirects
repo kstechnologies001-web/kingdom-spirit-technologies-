@@ -1,4 +1,4 @@
-/ /index.html 200
+/index.html 200
 /home.html /index.html 301
 /login /login.html 302
 /register /login.html?view=register 302
