@@ -1,0 +1,17 @@
+KINGDOM SPIRIT TECHNOLOGY — SETUP GUIDE
+
+1. Create a NEW Supabase project.
+2. Run the complete SUPABASE-SETUP.sql file in Supabase SQL Editor.
+3. Copy the new Supabase Project URL and Publishable key into the two placeholders in config.js.
+4. Create a NEW empty GitHub repository and upload the contents of this package directly into its root. Do not upload the ZIP or nest the files in another folder.
+5. Create a NEW Cloudflare Pages project using Git integration. Framework: None. Build command: exit 0. Output directory: . Root directory: repository root.
+6. In Cloudflare Production Variables and Secrets, add SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY as variables. Add SUPABASE_SECRET_KEY, PAYSTACK_SECRET_KEY and PAYSTACK_WEBHOOK_SECRET as encrypted secrets.
+7. Add the Workers AI binding named AI. Redeploy.
+8. Set the Supabase Auth Site URL and Redirect URLs to the actual Cloudflare site domain.
+9. Register your administrator account, confirm/sign in, then promote only that account using the SQL in START-HERE-KST-BACKEND.md.
+10. Configure Paystack test credentials and the webhook URL only when ready to test payments.
+11. Test /api/health, forms, authentication, dashboards, chatbot, storage and payment flows before launch.
+
+All code and pages are in the repository root. index.html is the official homepage; home.html is a compatibility redirect. The site uses Cloudflare Pages Advanced Mode in the root _worker.js file, not a functions/ directory.
+
+Never put SUPABASE_SECRET_KEY, PAYSTACK_SECRET_KEY or PAYSTACK_WEBHOOK_SECRET in config.js, HTML, browser JavaScript or GitHub.

@@ -1,0 +1,8 @@
+name = "kst-website"
+compatibility_date = "2026-11-09"
+pages_build_output_dir = "."
+
+# Workers AI binding used by the support chatbot. Also add this binding in
+# Cloudflare Pages > Settings > Functions > Compatibility / Bindings as AI.
+[ai]
+binding = "AI"

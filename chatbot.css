@@ -1,0 +1,39 @@
+/* Only the KST chatbot appearance is changed: floating electric-blue/cyan identity. */
+#kst-chat-launch{
+  all:unset;position:fixed!important;right:18px!important;bottom:18px!important;z-index:2147483000!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  width:56px!important;height:56px!important;min-width:56px!important;min-height:56px!important;
+  max-width:56px!important;max-height:56px!important;aspect-ratio:1/1!important;padding:0!important;
+  box-sizing:border-box!important;overflow:hidden!important;border:1px solid rgba(129,237,255,.95)!important;
+  border-radius:50%!important;cursor:pointer!important;color:#06101e!important;
+  background:linear-gradient(140deg,#59e4ff 0%,#438bff 58%,#315de8 100%)!important;
+  box-shadow:0 10px 30px rgba(38,125,255,.42),0 0 0 5px rgba(86,220,255,.11)!important;
+  font:800 11px/1 system-ui,sans-serif!important;text-align:center!important;letter-spacing:.02em!important;
+  opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:translateZ(0);
+  transition:transform .2s ease,filter .2s ease,box-shadow .2s ease;-webkit-tap-highlight-color:transparent
+}
+#kst-chat-launch:hover{transform:translateY(-2px);filter:brightness(1.07);box-shadow:0 14px 34px rgba(38,125,255,.52),0 0 0 6px rgba(86,220,255,.14)!important}
+.kst-chat-mark{width:43px;height:43px;border:1px solid rgba(6,16,30,.25);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.17)}
+.kst-chat-mark strong{font:950 12px/1 system-ui,sans-serif;letter-spacing:-.5px}
+.kst-chat-mark small{font:900 5px/1 system-ui,sans-serif;letter-spacing:1.3px}
+#kst-chat-launch:focus-visible,#kst-chat-send:focus-visible,#kst-chat-close:focus-visible{outline:3px solid #56dcff;outline-offset:4px}
+#kst-chat-launch[hidden]{display:none!important}
+#kst-chat-panel{position:fixed;right:18px;bottom:86px;z-index:2147483001;width:min(370px,calc(100vw - 28px));height:min(550px,calc(100dvh - 110px));min-height:340px;display:none;flex-direction:column;overflow:hidden;color:#eff7ff;background:#07111f;border:1px solid rgba(86,220,255,.34);border-radius:20px;box-shadow:0 28px 82px rgba(0,0,0,.65);font:14px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;box-sizing:border-box}
+#kst-chat-panel.kst-open{display:flex}
+#kst-chat-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 17px;background:linear-gradient(120deg,#112c4a,#102039 68%,#132d55);border-bottom:1px solid rgba(86,220,255,.2)}
+#kst-chat-head strong{display:block;color:#eff7ff;font-size:15px;font-weight:850;letter-spacing:-.02em}
+#kst-chat-head small{display:block;margin-top:3px;color:#75dfff;font-size:11px}
+#kst-chat-close{width:34px;height:34px;display:grid;place-items:center;flex:0 0 34px;padding:0;border:1px solid rgba(86,220,255,.25);border-radius:50%;color:#a8edff;background:rgba(255,255,255,.045);font-size:22px;line-height:1;cursor:pointer}
+#kst-chat-messages{flex:1;min-height:0;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:11px;scroll-behavior:smooth;background:radial-gradient(circle at 100% 0,rgba(49,130,255,.13),transparent 42%),#07111f}
+.kst-chat-msg{max-width:88%;padding:11px 13px;border-radius:15px;white-space:pre-wrap;overflow-wrap:anywhere;box-shadow:0 5px 16px rgba(0,0,0,.17)}
+.kst-chat-msg.bot{align-self:flex-start;color:#dceeff;background:#14263b;border:1px solid rgba(86,220,255,.12);border-bottom-left-radius:5px}
+.kst-chat-msg.user{align-self:flex-end;color:#06101e;background:linear-gradient(120deg,#75eaff,#6a9fff);border:1px solid rgba(143,229,255,.4);border-bottom-right-radius:5px}
+#kst-chat-form{display:flex;gap:8px;padding:12px 12px 9px;border-top:1px solid rgba(86,220,255,.18);background:#0d1a2a}
+#kst-chat-input{min-width:0;flex:1;color:#eff7ff;background:#07111f;border:1px solid rgba(86,220,255,.2);border-radius:11px;padding:12px 13px;font:inherit;outline:none}
+#kst-chat-input::placeholder{color:#8da7c0}
+#kst-chat-input:focus{border-color:#56dcff;box-shadow:0 0 0 3px rgba(86,220,255,.13)}
+#kst-chat-send{border:0;border-radius:11px;color:#06101e;background:linear-gradient(120deg,#75eaff,#6a9fff);font-weight:850;padding:0 15px;cursor:pointer}
+#kst-chat-send:disabled{opacity:.55;cursor:wait}
+#kst-chat-note{padding:0 14px 11px;color:#8da7c0;font-size:10px;background:#0d1a2a}
+@media(max-width:480px){#kst-chat-launch{right:14px!important;bottom:14px!important;width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;max-width:52px!important;max-height:52px!important}#kst-chat-panel{right:10px;bottom:76px;width:calc(100vw - 20px);height:min(530px,calc(100dvh - 94px));min-height:320px;border-radius:18px}}
+@media(prefers-reduced-motion:reduce){#kst-chat-launch{transition:none}#kst-chat-messages{scroll-behavior:auto}}

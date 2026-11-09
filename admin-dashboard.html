@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="#090909" name="theme-color"/>
+  <title>
+   Admin Dashboard | Kingdom Spirit Technology
+  </title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@600;700;800&amp;family=Playfair+Display:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="/style.css" rel="stylesheet"/>
+  <script src="/config.js">
+  </script>
+  <script src="/protect.js" type="module">
+  </script>
+  <script src="/admin-dashboard.js" type="module">
+  </script>
+ </head>
+ <body class="ks-inner">
+  <header style="position:sticky;top:0;z-index:20;background:rgba(8,13,25,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(150,175,220,.15);padding:16px 4%;display:flex;align-items:center;justify-content:space-between;gap:18px">
+   <a href="/index.html" style="text-decoration:none;font-weight:900;letter-spacing:.04em;color:#fff">
+    <span style="color:#d4af37">
+     KS ✦
+    </span>
+    KINGDOM SPIRIT
+    <span style="color:#168bff">
+     TECHNOLOGY
+    </span>
+   </a>
+   <nav style="display:flex;gap:17px;flex-wrap:wrap;font-size:.9rem">
+    <a href="/index.html">
+     Website
+    </a>
+    <button class="portal-button" id="adminLogout">
+     Log out
+    </button>
+   </nav>
+  </header>
+  <main class="portal-shell">
+   <div class="portal-heading">
+    <div>
+     <span class="portal-eyebrow">
+      Administration
+     </span>
+     <h1>
+      Control centre
+     </h1>
+     <p>
+      Manage client accounts, enquiries, projects, invoices, notifications, website messages and chatbot FAQs.
+     </p>
+    </div>
+   </div>
+   <div class="portal-grid">
+    <article class="portal-card">
+     <span class="portal-stat-label">
+      Clients
+     </span>
+     <div class="portal-stat-value" id="adminClients">
+      —
+     </div>
+    </article>
+    <article class="portal-card">
+     <span class="portal-stat-label">
+      Projects
+     </span>
+     <div class="portal-stat-value" id="adminProjects">
+      —
+     </div>
+    </article>
+    <article class="portal-card">
+     <span class="portal-stat-label">
+      Open enquiries
+     </span>
+     <div class="portal-stat-value" id="adminEnquiries">
+      —
+     </div>
+    </article>
+   </div>
+   <section class="portal-card" style="margin-top:18px">
+    <h2>
+     Create a client project
+    </h2>
+    <form class="portal-form" id="createProject">
+     <label>
+      Client account
+      <select id="clientSelect" name="client_id" required="">
+       <option value="">
+        Select client
+       </option>
+      </select>
+     </label>
+     <label>
+      Project title
+      <input name="title" required=""/>
+     </label>
+     <label>
+      Service
+      <input name="service" required=""/>
+     </label>
+     <label>
+      Due date
+      <input name="due_date" type="date"/>
+     </label>
+     <label>
+      Initial status
+      <select name="status">
+       <option>
+        planning
+       </option>
+       <option>
+        in progress
+       </option>
+       <option>
+        awaiting client
+       </option>
+      </select>
+     </label>
+     <label>
+      Progress (%)
+      <input max="100" min="0" name="progress" type="number" value="0"/>
+     </label>
+     <label style="grid-column:1/-1">
+      Description
+      <textarea name="description"></textarea>
+     </label>
+     <button class="portal-button primary" type="submit">
+      Create Project
+     </button>
+    </form>
+    <p class="portal-status" id="projectStatus">
+    </p>
+   </section>
+   <section class="portal-card" style="margin-top:18px">
+    <h2>
+     Update project progress
+    </h2>
+    <form class="portal-form" id="updateProject">
+     <label>
+      Project
+      <select id="updateProjectSelect" name="project_id" required="">
+       <option value="">
+        Select project
+       </option>
+      </select>
+     </label>
+     <label>
+      Status
+      <select name="status">
+       <option>
+        planning
+       </option>
+       <option>
+        in progress
+       </option>
+       <option>
+        awaiting client
+       </option>
+       <option>
+        completed
+       </option>
+       <option>
+        on hold
+       </option>
+      </select>
+     </label>
+     <label>
+      Progress (%)
+      <input max="100" min="0" name="progress" required="" type="number"/>
+     </label>
+     <label>
+      Due date
+      <input name="due_date" type="date"/>
+     </label>
+     <button class="portal-button primary" type="submit">
+      Update Project
+     </button>
+    </form>
+    <p class="portal-status" id="updateProjectStatus">
+    </p>
+   </section>
+   <section class="portal-card" style="margin-top:18px">
+    <h2>
+     Create an invoice
+    </h2>
+    <form class="portal-form" id="createInvoice">
+     <label>
+      Client account
+      <select class="client-select" name="client_id" required="">
+       <option value="">
+        Select client
+       </option>
+      </select>
+     </label>
+     <label>
+      Invoice number
+      <input name="invoice_number" placeholder="KST-INV-0001" required=""/>
+     </label>
+     <label>
+      Amount (NGN)
+      <input min="1" name="amount" required="" step="0.01" type="number"/>
+     </label>
+     <label>
+      Due date
+      <input name="due_date" type="date"/>
+     </label>
+     <button class="portal-button primary" type="submit">
+      Create Invoice
+     </button>
+    </form>
+    <p class="portal-status" id="invoiceStatus">
+    </p>
+   </section>
+   <section class="portal-card" style="margin-top:18px">
+    <h2>
+     Add a project milestone
+    </h2>
+    <form class="portal-form" id="createMilestone">
+     <label>
+      Project
+      <select id="milestoneProject" name="project_id" required="">
+       <option value="">
+        Select project
+       </option>
+      </select>
+     </label>
+     <label>
+      Milestone title
+      <input name="title" required=""/>
+     </label>
+     <label>
+      Due date
+      <input name="due_date" type="date"/>
+     </label>
+     <label>
+      Status
+      <select name="status">
+       <option>
+        pending
+       </option>
+       <option>
+        in progress
+       </option>
+       <option>
+        completed
+       </option>
+       <option>
+        awaiting client
+       </option>
+      </select>
+     </label>
+     <label style="grid-column:1/-1">
+      Description
+      <textarea name="description"></textarea>
+     </label>
+     <button class="portal-button primary" type="submit">
+      Save Milestone
+     </button>
+    </form>
+    <p class="portal-status" id="milestoneStatus">
+    </p>
+   </section>
+   <section class="portal-card" style="margin-top:18px">
+    <h2>
+     Share a project file
+    </h2>
+    <form class="portal-form" id="uploadProjectFile">
+     <label>
+      Client account
+      <select class="client-select" name="client_id" required="">
+       <option value="">
+        Select client
+       </option>
+      </select>
+     </label>
+     <label>
+      Project (optional)
+      <select id="fileProject" name="project_id">
+       <option value="">
+        General client file
+       </option>
+      </select>
+     </label>
+     <label style="grid-column:1/-1">
+      Choose file
+      <input name="file" required="" type="file"/>
+     </label>
+     <button class="portal-button primary" type="submit">
+      Upload &amp; Share File
+     </button>
+    </form>
+    <p class="portal-status" id="fileStatus">
+    </p>
+   </section>
+   <section class="portal-card" style="margin-top:18px">
+    <h2>
+     Send client notification
+    </h2>
+    <form class="portal-form" id="createNotification">
+     <label>
+      Client account
+      <select class="client-select" name="user_id" required="">
+       <option value="">
+        Select client
+       </option>
+      </select>
+     </label>
+     <label>
+      Title
+      <input name="title" required=""/>
+     </label>
+     <label style="grid-column:1/-1">
+      Message
+      <textarea name="body" required=""></textarea>
+     </label>
+     <button class="portal-button primary" type="submit">
+      Send Notification
+     </button>
+    </form>
+    <p class="portal-status" id="notificationStatus">
+    </p>
+   </section>
+   <section class="portal-card" style="margin-top:18px">
+    <h2>
+     Recent enquiries
+    </h2>
+    <div id="adminEnquiryList">
+    </div>
+   </section>
+   <section class="portal-card" style="margin-top:18px">
+    <h2>
+     Projects
+    </h2>
+    <div id="adminProjectList">
+    </div>
+   </section>
+   <section class="portal-card" style="margin-top:18px">
+    <h2>
+     Support requests
+    </h2>
+    <div id="adminSupportList">
+    </div>
+   </section>
+   <section aria-labelledby="contactMessagesHeading" class="portal-card" style="margin-top:18px">
+    <h2 id="contactMessagesHeading">
+     Website contact messages
+    </h2>
+    <p style="margin-bottom:14px">
+     Messages submitted through the public contact form appear here. Only administrator accounts can read this inbox.
+    </p>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+     <button class="portal-button" id="refreshContactMessages" type="button">
+      Refresh messages
+     </button>
+     <span aria-live="polite" class="portal-status" id="contactMessageStatus" role="status">
+     </span>
+    </div>
+    <div id="adminContactMessages">
+     <div class="portal-empty">
+      Loading contact messages…
+     </div>
+    </div>
+   </section>
+   <section aria-labelledby="faqManagerHeading" class="portal-card" style="margin-top:18px">
+    <h2 id="faqManagerHeading">
+     Chatbot FAQ manager
+    </h2>
+    <p style="margin-bottom:14px">
+     Add answers for the KST chatbot. Only published FAQs are visible to website visitors.
+    </p>
+    <form class="portal-form" id="faqForm">
+     <input id="faqId" name="id" type="hidden" value=""/>
+     <label style="grid-column:1/-1">
+      Question
+      <input id="faqQuestion" maxlength="300" name="question" placeholder="e.g. What services does KST offer?" required="" type="text"/>
+     </label>
+     <label style="grid-column:1/-1">
+      Answer
+      <textarea id="faqAnswer" maxlength="1800" name="answer" placeholder="Write a clear answer for website visitors." required=""></textarea>
+     </label>
+     <label>
+      Publication status
+      <select id="faqPublished" name="is_published">
+       <option value="false">
+        Draft — not visible to visitors
+       </option>
+       <option value="true">
+        Published — visible to visitors
+       </option>
+      </select>
+     </label>
+     <div style="display:flex;align-items:end;gap:10px;flex-wrap:wrap">
+      <button class="portal-button primary" id="saveFaqButton" type="submit">
+       Save FAQ
+      </button>
+      <button class="portal-button" hidden="" id="cancelFaqEdit" type="button">
+       Cancel edit
+      </button>
+     </div>
+    </form>
+    <p aria-live="polite" class="portal-status" id="faqStatus" role="status">
+    </p>
+    <div id="adminFaqList">
+     <div class="portal-empty">
+      Loading FAQs…
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer class="ks-footer">
+   Kingdom Spirit Technology · Administration
+  </footer>
+  <script defer="" src="/chatbot.js">
+  </script>
+ </body>
+</html>
+

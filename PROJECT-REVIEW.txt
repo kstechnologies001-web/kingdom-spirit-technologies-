@@ -1,0 +1,37 @@
+KINGDOM SPIRIT TECHNOLOGY — DEEP PACKAGE REVIEW
+Prepared 9 November 2026
+
+INPUT
+- Reviewed the uploaded KST-ROOT-ONLY-UPDATED.zip directly.
+- Confirmed the original archive had 85 root-level files and no nested project folders.
+- Rechecked every HTML local href/src/action reference, page anchors, local JavaScript imports, and source syntax.
+
+REPAIRS INCLUDED
+- Removed the previous Supabase Project URL and Publishable key from public config.js; replaced both with new-project placeholders.
+- Made index.html the canonical homepage using the fuller existing KST homepage content. home.html now redirects to it, and internal navigation uses index.html.
+- Corrected both password recovery callbacks from the nonexistent /account/reset-password.html to /reset-password.html.
+- Corrected old deployment/setup documentation that described nested folders and a functions/ directory, while the actual package uses root-only files and Pages Advanced Mode.
+- Added the documented GET /api/health route and readiness flags.
+- Made browser/server configuration checks reject placeholders and malformed/non-HTTPS Supabase URLs.
+- Added safer same-origin checks and JSON/body-size validation to public API input handlers.
+- Added a private payment_attempts table and changed Paystack initialization, verification and webhook reconciliation to preserve each reference, reserve a database record before contacting Paystack, reuse an active checkout and compare amount/currency before marking an invoice paid.
+- Corrected Supabase's new opaque `sb_secret_...` key handling: the server sends it as `apikey` and does not incorrectly use it as a JWT bearer token. Only a real customer access token is sent as `Authorization: Bearer` to the Auth user endpoint.
+- Added Worker-level legacy URL redirects because Advanced Mode takes over requests and static `_redirects` rules are not applied to Worker-handled requests.
+- Added safer failure handling for Paystack network errors so an initialization attempt is closed where possible instead of remaining indefinitely stuck with an empty checkout URL.
+- Consolidated the Supabase database setup into one root-level SUPABASE-SETUP.sql file, including RLS, contact inbox, published FAQ rules, admin permissions and private file storage. Hardened the private project-file bucket to a 10 MiB maximum and admin-only upload/deletion; clients can read only their own shared files.
+- Rewrote the setup and deployment guides so their paths and Cloudflare mode match the actual code.
+- Added an offline checker (`npm run check`) for HTML links, fragments, local imports, API routes, key removal and JavaScript syntax.
+
+VALIDATION
+- JavaScript syntax check: passed for all root .js/.mjs files.
+- Internal HTML references: passed; all local pages and assets are root-level files.
+- Cross-page section anchors: checked, including the dashboard's JavaScript-managed section links.
+- Local module imports: checked against the root files.
+- API route list: checked against the root _worker.js router.
+- Previous Supabase URL and Publishable key: no longer present in the rebuilt package.
+- Supabase secret-key header smoke test: confirms the opaque secret key is sent only in `apikey`, not as a bearer token.
+- Worker routing smoke tests: `/api/health`, method rejection, unknown API rejection, homepage alias, password-reset alias, `/register` query preservation and static asset pass-through.
+- Final offline checker: 49 checks passed with 0 warnings and 0 failures; the exact count is reproduced by `npm run check` in the package.
+
+LIMITS THAT REQUIRE YOUR NEW ACCOUNTS
+A ZIP audit cannot sign in to or create your new Supabase, GitHub, Cloudflare or Paystack projects. It cannot confirm live domain DNS, dashboard secrets, Workers AI binding, email delivery or successful live payment. The provided checklist tells you exactly how to test those settings after you create them. The offline checker does not probe external social/WhatsApp links or replace a live browser/device test. It also cannot prove real Supabase email delivery, new-account RLS behavior, Workers AI availability, Paystack test-mode webhook delivery, or custom-domain DNS before those accounts are configured. The public hostname placeholders in `robots.txt` and `sitemap.xml` must be replaced after Cloudflare assigns the actual Pages hostname.

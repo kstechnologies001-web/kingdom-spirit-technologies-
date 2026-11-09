@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /admin-dashboard.html
+Disallow: /admin-login.html
+Disallow: /client-dashboard.html
+Disallow: /login.html
+Disallow: /register.html
+Disallow: /forgot-password.html
+Disallow: /reset-password.html
+Disallow: /checkout.html
+Disallow: /payment.html
+Disallow: /payment-success.html
+Disallow: /thank-you.html
+Disallow: /api/
+Sitemap: https://YOUR-SITE.pages.dev/sitemap.xml

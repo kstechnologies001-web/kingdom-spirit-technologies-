@@ -1,0 +1,38 @@
+KINGDOM SPIRIT TECHNOLOGY — ROOT-ONLY REDEPLOY GUIDE
+
+REPOSITORY ROOT
+The GitHub repository top level must directly show:
+- index.html
+- _worker.js
+- _redirects
+- _headers
+- config.js
+- style.css
+- chatbot.js
+- chatbot.css
+- SUPABASE-SETUP.sql
+- package.json
+- wrangler.toml
+
+All other pages, JavaScript files and founder.png are also directly at this same level. Do not upload the ZIP file and do not add a containing folder. Do not create nested asset or functions folders.
+
+CLOUDFLARE PAGES BUILD SETTINGS
+- Framework preset: None
+- Build command: exit 0
+- Build output directory: .
+- Root directory: repository root
+- Use Git integration so _worker.js and all root files deploy together.
+
+BACKEND SMOKE TEST
+Open https://YOUR-SITE.pages.dev/api/health. It must return JSON with ok:true. The readiness object reports whether Supabase, Paystack and Workers AI settings are present; it never exposes secret values.
+
+OTHER SMOKE TESTS
+- / and /index.html — official homepage
+- /home.html — compatibility redirect to /index.html
+- /contact.html — contact page
+- /login.html — login/register page
+- /reset-password.html — password reset page
+- /api/chat with GET — expected 405 because chat accepts POST
+- /a-page-that-does-not-exist.html — custom 404 page
+
+For the database, run SUPABASE-SETUP.sql. For the full order of setup, follow START-HERE-KST-BACKEND.md.

@@ -1,0 +1,16 @@
+PUBLIC HOMEPAGE AND CUSTOMER REQUEST FLOW
+
+- index.html is the single canonical homepage and is served at the website root (/).
+- home.html is retained as a compatibility redirect for old bookmarks; current navigation points to index.html.
+- All public pages and assets are stored in the repository root.
+- Public contact messages are inserted into public.contact_messages.
+- Quote, consultation and project-brief forms submit to POST /api/enquiries and are saved in public.enquiries.
+- A successfully submitted service request opens root-level checkout.html with a request reference. It does not charge the visitor.
+- The KST team agrees scope and price, then creates an invoice for the registered customer's account.
+- Customers can pay approved invoices through the private account dashboard and Paystack hosted checkout.
+
+DEPLOYMENT
+Deploy the whole root through Cloudflare Pages Git integration. This package uses Cloudflare Pages Advanced Mode via _worker.js; no functions/, js/, css/ or supabase/ folders are required.
+
+KEYS
+Replace the public Supabase placeholders in config.js. Put Supabase Secret and Paystack Secret values only in Cloudflare encrypted Secrets.

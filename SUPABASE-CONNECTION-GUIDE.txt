@@ -1,0 +1,11 @@
+SUPABASE CONNECTION GUIDE — NEW PROJECT
+
+1. Create a new Supabase project.
+2. Run SUPABASE-SETUP.sql in SQL Editor. It creates the profiles, enquiries, projects, invoices, payment_attempts, notifications, support, milestones, private files, contact_messages and faq_entries tables, policies, indexes and private storage bucket.
+3. In Project Settings → API Keys, copy the Project URL and Publishable key. Put those values in config.js, replacing the placeholders.
+4. Copy the Supabase Secret key only into Cloudflare's encrypted SUPABASE_SECRET_KEY setting. Never place it in config.js.
+5. In Authentication → URL Configuration, set Site URL to your deployed Cloudflare domain and add https://YOUR-SITE.pages.dev/** to Redirect URLs. Replace YOUR-SITE with the actual hostname.
+6. Register your admin user, sign in once, then use the admin-promotion SQL in START-HERE-KST-BACKEND.md.
+7. Sign out and sign in again. Visit /admin-dashboard.html.
+
+RLS is enabled for customer and website tables. Public visitors may submit contact messages and read published FAQs only. Customers can access their own dashboard records. Administrators can manage website inbox/FAQ data and customer project data. Server-side payment records remain inaccessible to browser users.

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#090909" name="theme-color"/>
+<meta content="Review your Kingdom Spirit Technology service request or pay an approved invoice through secure hosted checkout." name="description"/>
+<title>Secure Checkout | Kingdom Spirit Technology</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@600;700;800&amp;family=Playfair+Display:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="/style.css" rel="stylesheet"/>
+<script src="/config.js"></script>
+<script src="/checkout.js" type="module"></script>
+</head>
+<body class="ks-inner kst-checkout-page">
+<header class="kst-checkout-header">
+  <a class="kst-checkout-brand" href="/index.html" aria-label="Kingdom Spirit Technology home"><span>KS</span> KINGDOM SPIRIT <b>TECHNOLOGY</b></a>
+  <nav aria-label="Checkout navigation"><a href="/index.html">Home</a><a href="/services.html">Services</a><a href="/client-dashboard.html">Client dashboard</a></nav>
+</header>
+<main class="kst-checkout-shell">
+  <div class="kst-checkout-intro">
+    <span class="portal-eyebrow">KINGDOM SPIRIT TECHNOLOGY · SECURE CUSTOMER PORTAL</span>
+    <h1 id="checkoutHeading">Secure checkout</h1>
+    <p id="checkoutLead">Review your service request or pay an approved invoice securely.</p>
+  </div>
+  <div class="kst-checkout-layout">
+    <section aria-live="polite" class="kst-checkout-card">
+      <div class="kst-checkout-state-row"><span class="kst-checkout-state" id="checkoutStateBadge">SECURE CHECKOUT</span><span class="kst-checkout-reference-label">Reference-based billing</span></div>
+      <div aria-hidden="true" class="kst-checkout-icon">✦</div>
+      <h2 id="checkoutCardTitle">Preparing your checkout</h2>
+      <p class="kst-checkout-message" id="checkoutMessage">Please wait while we load your details.</p>
+      <div class="kst-invoice-details" hidden="" id="invoiceDetails">
+        <div><span>Invoice number</span><strong id="invoiceNumber">—</strong></div>
+        <div><span>Total amount due</span><strong id="invoiceAmount">—</strong></div>
+        <div><span>Payment status</span><strong id="invoiceStatus">—</strong></div>
+        <div><span>Due date</span><strong id="invoiceDueDate">—</strong></div>
+      </div>
+      <p class="kst-checkout-error" id="checkoutError" role="alert"></p>
+      <button class="kst-checkout-button" hidden="" id="payNowButton" type="button">Continue to secure payment <span aria-hidden="true">↗</span></button>
+      <div class="kst-checkout-actions">
+        <a href="/login.html" id="accountLink">Sign in / Create account</a>
+        <a href="/contact.html">Contact our team</a>
+      </div>
+      <p class="kst-checkout-footnote">Your card or bank details are entered on Paystack's secure hosted payment page. KST does not collect or store your card details on this website. Do not share your PIN, password or one-time password with anyone.</p>
+    </section>
+    <aside class="kst-checkout-sidebar" aria-label="Checkout information">
+      <section class="kst-checkout-info-card">
+        <span class="kst-info-kicker">THE PAYMENT JOURNEY</span>
+        <h2>Clear steps. No surprise charges.</h2>
+        <ol class="kst-checkout-steps">
+          <li><span>01</span><div><strong>Submit your request</strong><p>Tell us what you need and share the relevant project details.</p></div></li>
+          <li><span>02</span><div><strong>Agree the scope and price</strong><p>Our team reviews the request and confirms the work and cost with you.</p></div></li>
+          <li><span>03</span><div><strong>Receive an approved invoice</strong><p>A payment link becomes available after an invoice is created for your account.</p></div></li>
+          <li><span>04</span><div><strong>Pay securely</strong><p>Continue to Paystack and complete the payment using an available payment method.</p></div></li>
+        </ol>
+      </section>
+      <section class="kst-checkout-info-card kst-checkout-security">
+        <span class="kst-info-kicker">PAYMENT PROTECTION</span>
+        <h3>What you should know</h3>
+        <ul>
+          <li>Only an approved invoice can be paid here.</li>
+          <li>Your invoice is visible only after you sign in to the correct customer account.</li>
+          <li>Payment is confirmed against the invoice amount and currency before the invoice is marked paid.</li>
+          <li>For an issue, contact KST before attempting repeated payments.</li>
+        </ul>
+      </section>
+      <section class="kst-checkout-support">
+        <span>NEED HELP?</span>
+        <p>Questions about an invoice or payment? Our team can help you check the next step.</p>
+        <a href="https://wa.me/2349040371231" target="_blank" rel="noopener">Contact KST on WhatsApp ↗</a>
+      </section>
+    </aside>
+  </div>
+</main>
+<footer class="ks-footer">© <span id="ks-year">2026</span> Kingdom Spirit Technology · Technology With Purpose</footer>
+<script>document.getElementById('ks-year').textContent = new Date().getFullYear();</script>
+<script defer src="/chatbot.js"></script>
+</body>
+</html>
